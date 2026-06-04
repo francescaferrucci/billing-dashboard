@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hannah Billing Dashboard Mockup</title>
-
+  <title>Hannah Billing Dashboard Mockup - Revised</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <style>
     :root {
-      --hannah-blue: #1f6f8b;
-      --hannah-dark-blue: #15566e;
-      --hannah-green: #4f8f45;
+      --blue: #1f6f8b;
+      --dark-blue: #15566e;
+      --green: #4f8f45;
       --soft-bg: #f4f7f8;
       --border: #dce3e6;
       --danger: #b94a48;
       --warning: #8a6d3b;
       --success: #3c763d;
+      --purple: #6657a8;
     }
 
     body {
@@ -28,93 +28,192 @@
     }
 
     .top-bar {
-      background: white;
+      background: #fff;
       border-bottom: 1px solid var(--border);
       padding: 18px 30px;
       margin-bottom: 24px;
     }
 
     .brand-title {
-      color: var(--hannah-green);
+      color: var(--green);
       font-weight: 700;
       font-size: 22px;
-      margin-left: 10px;
       vertical-align: middle;
     }
 
-    .nav-tabs {
-      margin-top: 12px;
+    .nav-tabs { margin-top: 10px; }
+    .nav-tabs > li.active > a { color: var(--blue); font-weight: 700; }
+
+    .page-wrap { width: 94%; margin: auto; }
+    .page-title { color: var(--dark-blue); font-weight: 700; margin-bottom: 4px; }
+    .subtext { color: #667; margin-bottom: 20px; }
+
+    .note {
+      border-left: 4px solid var(--green);
+      background: white;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      color: #405058;
     }
 
-    .nav-tabs > li.active > a,
-    .nav-tabs > li.active > a:hover {
-      color: var(--hannah-blue);
-      font-weight: 700;
-    }
-
-    .page-wrap {
-      width: 94%;
-      margin: auto;
-    }
-
-    .page-title {
-      margin-bottom: 4px;
-      color: var(--hannah-dark-blue);
-      font-weight: 700;
-    }
-
-    .subtext {
-      color: #667;
-      margin-bottom: 22px;
-    }
-
-    .summary-card {
+    .card {
       background: white;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 18px 14px;
-      margin-bottom: 16px;
-      min-height: 105px;
+      padding: 16px 12px;
+      margin-bottom: 14px;
+      min-height: 104px;
       box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      text-align: center;
     }
 
-    .summary-card .label {
-      display: block;
+    .card .label-text {
       color: #607078;
       font-size: 12px;
-      letter-spacing: .02em;
       text-transform: uppercase;
+      letter-spacing: .02em;
       margin-bottom: 6px;
-      padding: 0;
-      background: transparent;
     }
 
-    .summary-card .value {
-      font-size: 26px;
+    .card .value {
+      font-size: 25px;
       font-weight: 700;
-      color: var(--hannah-dark-blue);
+      color: var(--dark-blue);
     }
 
-    .summary-card .small-note {
+    .card .small-note {
       color: #7a858b;
       font-size: 12px;
       margin-top: 4px;
     }
 
-    .billing-type-card .value {
-      font-size: 20px;
+    .section {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 18px 0 22px;
     }
 
-    .panel-hannah {
-      border-color: var(--border);
-      box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    }
-
-    .panel-hannah > .panel-heading {
-      background: var(--hannah-blue);
-      color: white;
-      border-color: var(--hannah-blue);
+    .section h4 {
+      margin: 0 0 12px;
+      color: #222;
       font-weight: 700;
+    }
+
+    .aging-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #e1e5ea;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .aging-tab {
+      padding: 11px 22px;
+      background: #fff;
+      color: #4d5b64;
+      border-right: 1px solid #e1e5ea;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .aging-tab.active {
+      background: #34454f;
+      color: #fff;
+    }
+
+    .aging-tab:hover { background: #f5f7f9; text-decoration: none; }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(115px, 1fr));
+      gap: 10px;
+    }
+
+    .service-card {
+      display: block;
+      text-align: center;
+      background: #fff;
+      border: 1px solid #dfe5eb;
+      border-radius: 4px;
+      padding: 14px 8px;
+      text-decoration: none;
+      color: #222;
+    }
+
+    .service-card:hover {
+      background: #f8fafc;
+      border-color: #bfcbd6;
+      text-decoration: none;
+    }
+
+    .service-card.active {
+      border-color: #34454f;
+      box-shadow: 0 0 0 2px rgba(52, 69, 79, .15);
+    }
+
+    .service-name {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .service-amount {
+      font-size: 15px;
+      font-weight: 700;
+      color: #00843d;
+      margin-bottom: 5px;
+    }
+
+    .service-count {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .payment-filter-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(145px, 1fr));
+      gap: 10px;
+    }
+
+    .payment-card {
+      background: #fff;
+      border: 1px solid #dfe5eb;
+      border-radius: 4px;
+      padding: 13px 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .payment-card.active {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 2px rgba(102, 87, 168, .15);
+    }
+
+    .payment-card .icon {
+      color: var(--purple);
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .payment-card .title {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .payment-card .amount {
+      color: var(--purple);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .payment-card .count {
+      color: #666;
+      font-size: 12px;
     }
 
     .filter-box {
@@ -123,6 +222,18 @@
       border-radius: 8px;
       padding: 18px;
       margin: 18px 0;
+    }
+
+    .panel-hannah {
+      border-color: var(--border);
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+
+    .panel-hannah > .panel-heading {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+      font-weight: 700;
     }
 
     .table > thead > tr > th {
@@ -134,19 +245,10 @@
       vertical-align: middle;
     }
 
-    .table > tbody > tr > td {
-      vertical-align: middle;
-    }
+    .table > tbody > tr > td { vertical-align: middle; }
 
-    .money-due {
-      font-weight: 700;
-      color: #b23b3b;
-    }
-
-    .money-paid {
-      color: var(--success);
-      font-weight: 700;
-    }
+    .money-due { font-weight: 700; color: #b23b3b; }
+    .money-paid { color: var(--success); font-weight: 700; }
 
     .status-pill {
       display: inline-block;
@@ -157,42 +259,24 @@
       white-space: nowrap;
     }
 
-    .status-current {
-      background: #dff0d8;
-      color: var(--success);
-    }
+    .status-current { background: #dff0d8; color: var(--success); }
+    .status-due { background: #fcf8e3; color: var(--warning); }
+    .status-past { background: #f2dede; color: var(--danger); }
+    .status-review { background: #d9edf7; color: #31708f; }
+    .status-plan { background: #e8e3f6; color: var(--purple); }
+    .status-hold { background: #f7e4d5; color: #9a5a20; }
 
-    .status-due {
-      background: #fcf8e3;
-      color: var(--warning);
-    }
+    .pet-list { line-height: 1.45; }
+    .pet-id { color: #7b858a; font-size: 12px; }
 
-    .status-past {
-      background: #f2dede;
-      color: var(--danger);
-    }
-
-    .status-review {
-      background: #d9edf7;
-      color: #31708f;
-    }
-
-    .status-plan {
-      background: #e8e3f6;
-      color: #59408d;
-    }
-
-    .pet-list {
-      line-height: 1.45;
-    }
-
-    .pet-id {
-      color: #7b858a;
-      font-size: 12px;
-    }
-
-    .action-btn {
-      margin: 2px 0;
+    .mini-tag {
+      display: inline-block;
+      border-radius: 12px;
+      padding: 3px 8px;
+      background: #eef4f6;
+      color: #45545b;
+      font-size: 11px;
+      margin-top: 4px;
     }
 
     .statement-box {
@@ -218,411 +302,466 @@
       text-align: right;
     }
 
-    .workflow-note {
-      border-left: 4px solid var(--hannah-green);
-      background: white;
-      padding: 14px 16px;
-      margin-bottom: 18px;
-      color: #405058;
+    @media (max-width: 1200px) {
+      .service-grid { grid-template-columns: repeat(3, minmax(115px, 1fr)); }
+      .payment-filter-grid { grid-template-columns: repeat(2, minmax(145px, 1fr)); }
     }
 
-    .footer-note {
-      color: #778188;
-      text-align: center;
-      margin-top: 30px;
-      font-size: 12px;
+    @media (max-width: 768px) {
+      .service-grid, .payment-filter-grid { grid-template-columns: repeat(1, minmax(115px, 1fr)); }
+      .aging-tab { flex: 1 1 auto; text-align: center; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="top-bar">
-    <div class="row">
-      <div class="col-md-4">
-        <span class="brand-title">Hannah Pet Hospital</span>
+<div class="top-bar">
+  <div class="row">
+    <div class="col-md-4">
+      <span class="brand-title">Hannah Pet Hospital</span>
+    </div>
+    <div class="col-md-8">
+      <ul class="nav nav-tabs pull-right">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Members</a></li>
+        <li><a href="#">Invoices</a></li>
+        <li><a href="#">Payments</a></li>
+        <li><a href="#">Activities</a></li>
+        <li><a href="#">Documents</a></li>
+        <li><a href="#">Report</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <h2 class="page-title">Billing Dashboard</h2>
+  <p class="subtext">Revised mockup: service type remains the source of truth; payment plans are tracked separately as an account/payment-plan status.</p>
+
+  <div class="note">
+    <strong>Key correction:</strong> “Payment Plan” is not a Billing Type. HLH, Specialty Plan, Employee, etc. should come from the existing Hannah Service Type/Plan source. Payment Plan is a separate account flag based on whether the Member has an active, delinquent, completed, or cancelled payment plan record.
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="card">
+        <div class="label-text">Total Outstanding</div>
+        <div class="value">$184,220</div>
+        <div class="small-note">All open Member balances</div>
       </div>
-      <div class="col-md-8">
-        <ul class="nav nav-tabs pull-right">
-          <li class="active"><a href="#">Dashboard</a></li>
-          <li><a href="#">Members</a></li>
-          <li><a href="#">Invoices</a></li>
-          <li><a href="#">Payments</a></li>
-          <li><a href="#">Activities</a></li>
-          <li><a href="#">Documents</a></li>
-          <li><a href="#">Report</a></li>
-        </ul>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="card">
+        <div class="label-text">Overdue Amount</div>
+        <div class="value">$149,620</div>
+        <div class="small-note">Past due account balances</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="card">
+        <div class="label-text">Current Amount</div>
+        <div class="value">$34,600</div>
+        <div class="small-note">Within payment window</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="card">
+        <div class="label-text">Pending Collections</div>
+        <div class="value">$28,715</div>
+        <div class="small-note">18 Member accounts</div>
       </div>
     </div>
   </div>
 
-  <div class="page-wrap">
-    <h2 class="page-title">Billing Dashboard</h2>
-    <p class="subtext">Statement-based billing view: one Member account, one monthly statement, one rolling balance, one aging status.</p>
-
-    <div class="workflow-note">
-      <strong>Purpose of this mockup:</strong> The system may still keep invoices and payments underneath, but staff work from this account-balance dashboard instead of chasing multiple overdue invoices.
+  <div class="section">
+    <h4>Aging Accounts</h4>
+    <div class="aging-tabs">
+      <a class="aging-tab active">All</a>
+      <a class="aging-tab">Current</a>
+      <a class="aging-tab">Overdue</a>
+      <a class="aging-tab">1-30</a>
+      <a class="aging-tab">31-60</a>
+      <a class="aging-tab">61-90</a>
+      <a class="aging-tab">91-120</a>
+      <a class="aging-tab">121-180</a>
+      <a class="aging-tab">181+</a>
+      <a class="aging-tab">Credits</a>
+      <a class="aging-tab">Balance</a>
     </div>
+    <label style="font-weight:400; margin-right:18px;"><input type="checkbox"> For follow up only</label>
+    <label style="font-weight:400;"><input type="checkbox"> Include all users in email search</label>
+  </div>
 
-    <div class="row">
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">Total Outstanding</span>
-          <div class="value">$184,220</div>
-          <div class="small-note">All open Member balances</div>
-        </div>
-      </div>
+  <div class="section">
+    <h4>For Hannah Service Type</h4>
+    <p style="color:#667; margin-top:-5px;">These cards should pull from the Plan/Hannah Service Type source only, not a duplicate Billing Type field.</p>
 
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">Current</span>
-          <div class="value">$34,600</div>
-          <div class="small-note">Within payment window</div>
-        </div>
-      </div>
+    <div class="service-grid">
+      <a class="service-card active">
+        <div class="service-name">General</div>
+        <div class="service-amount">$126,840</div>
+        <div class="service-count">438 Accounts</div>
+      </a>
 
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">1-30 Days</span>
-          <div class="value">$52,110</div>
-          <div class="small-note">Past due balance</div>
-        </div>
-      </div>
+      <a class="service-card">
+        <div class="service-name">Classroom</div>
+        <div class="service-amount">$3,210</div>
+        <div class="service-count">18 Accounts</div>
+      </a>
 
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">31-60 Days</span>
-          <div class="value">$41,305</div>
-          <div class="small-note">Follow-up needed</div>
-        </div>
-      </div>
+      <a class="service-card">
+        <div class="service-name">Curt's Fund</div>
+        <div class="service-amount">$4,850</div>
+        <div class="service-count">11 Accounts</div>
+      </a>
 
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">61-90 Days</span>
-          <div class="value">$27,490</div>
-          <div class="small-note">Delinquent</div>
-        </div>
-      </div>
+      <a class="service-card">
+        <div class="service-name">Employee</div>
+        <div class="service-amount">$7,920</div>
+        <div class="service-count">31 Accounts</div>
+      </a>
 
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card">
-          <span class="label">91+ Days</span>
-          <div class="value">$28,715</div>
-          <div class="small-note">Collections review</div>
-        </div>
-      </div>
+      <a class="service-card">
+        <div class="service-name">Group Home</div>
+        <div class="service-amount">$6,540</div>
+        <div class="service-count">17 Accounts</div>
+      </a>
+
+      <a class="service-card">
+        <div class="service-name">HLH</div>
+        <div class="service-amount">$10,830</div>
+        <div class="service-count">29 Accounts</div>
+      </a>
+
+      <a class="service-card">
+        <div class="service-name">Hardship</div>
+        <div class="service-amount">$14,600</div>
+        <div class="service-count">42 Accounts</div>
+      </a>
+
+      <a class="service-card">
+        <div class="service-name">Specialty Plan</div>
+        <div class="service-amount">$8,355</div>
+        <div class="service-count">21 Accounts</div>
+      </a>
+
+      <a class="service-card">
+        <div class="service-name">Veteran</div>
+        <div class="service-amount">$14,160</div>
+        <div class="service-count">49 Accounts</div>
+      </a>
     </div>
+  </div>
 
-    <h4 style="color:#15566e; margin-top:20px;">Billing Type Overview</h4>
-    <div class="row">
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">General</span>
-          <div class="value">$122,840</div>
-          <div class="small-note">438 accounts</div>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">Classroom</span>
-          <div class="value">$3,210</div>
-          <div class="small-note">18 accounts</div>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">Employee</span>
-          <div class="value">$7,920</div>
-          <div class="small-note">31 accounts</div>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">Hardship</span>
-          <div class="value">$14,600</div>
-          <div class="small-note">42 accounts</div>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">Payment Plan</span>
-          <div class="value">$21,490</div>
-          <div class="small-note">27 active plans</div>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <div class="summary-card billing-type-card">
-          <span class="label">Veteran</span>
-          <div class="value">$14,160</div>
-          <div class="small-note">49 accounts</div>
-        </div>
-      </div>
-    </div>
+  <div class="section">
+    <h4>Payment Plan Tracking</h4>
+    <p style="color:#667; margin-top:-5px;">This is a separate filter/status layer, not a service type. It is based on the payment_plans table.</p>
 
-    <div class="filter-box">
-      <form class="form-inline">
-        <div class="form-group">
-          <label>Search</label>
-          <input type="text" class="form-control" placeholder="Member, Pet, Email">
-        </div>
-
-        <div class="form-group" style="margin-left:10px;">
-          <label>Aging</label>
-          <select class="form-control">
-            <option>All</option>
-            <option>Current</option>
-            <option>1-30</option>
-            <option>31-60</option>
-            <option>61-90</option>
-            <option>91-120</option>
-            <option>120+</option>
-          </select>
-        </div>
-
-        <div class="form-group" style="margin-left:10px;">
-          <label>Billing Type</label>
-          <select class="form-control">
-            <option>All</option>
-            <option>General</option>
-            <option>Classroom</option>
-            <option>Employee</option>
-            <option>Hardship</option>
-            <option>Payment Plan</option>
-            <option>Veteran</option>
-          </select>
-        </div>
-
-        <button type="button" class="btn btn-primary" style="margin-left:10px;">Apply Filter</button>
-        <button type="button" class="btn btn-default">Clear</button>
-      </form>
-    </div>
-
-    <div class="panel panel-hannah">
-      <div class="panel-heading">
-        Member Account Balances
+    <div class="payment-filter-grid">
+      <div class="payment-card active">
+        <div class="icon"><i class="fa fa-calendar-check-o"></i></div>
+        <div class="title">Has Payment Plan</div>
+        <div class="amount">$21,490</div>
+        <div class="count">27 Accounts</div>
       </div>
 
-      <div class="panel-body">
-        <table class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th>Member</th>
-              <th>Pets</th>
-              <th>Billing Type</th>
-              <th>Previous Balance</th>
-              <th>New TLC Charges</th>
-              <th>Payments This Cycle</th>
-              <th>Total Balance</th>
-              <th>Oldest Unpaid Date</th>
-              <th>Aging</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      <div class="payment-card">
+        <div class="icon"><i class="fa fa-play-circle"></i></div>
+        <div class="title">Active Plan</div>
+        <div class="amount">$18,240</div>
+        <div class="count">21 Accounts</div>
+      </div>
 
-          <tbody>
-            <tr>
-              <td>
-                <strong>John Smith</strong><br>
-                <small>john.smith@email.com</small>
-              </td>
-              <td class="pet-list">
-                Bella <span class="pet-id">/ 10291</span><br>
-                Max <span class="pet-id">/ 10487</span>
-              </td>
-              <td>General</td>
-              <td>$100.00</td>
-              <td>$300.00</td>
-              <td class="money-paid">$200.00</td>
-              <td class="money-due">$200.00</td>
-              <td>Mar 31, 2026</td>
-              <td>31-60</td>
-              <td><span class="status-pill status-due">Payment Due</span></td>
-              <td>
-                <button class="btn btn-xs btn-primary action-btn" data-toggle="modal" data-target="#statementModal">View Statement</button>
-                <button class="btn btn-xs btn-success action-btn">Take Payment</button>
-                <button class="btn btn-xs btn-default action-btn">Payment Plan</button>
-              </td>
-            </tr>
+      <div class="payment-card">
+        <div class="icon"><i class="fa fa-exclamation-triangle"></i></div>
+        <div class="title">Delinquent Plan</div>
+        <div class="amount">$3,250</div>
+        <div class="count">6 Accounts</div>
+      </div>
 
-            <tr>
-              <td>
-                <strong>Jane Doe</strong><br>
-                <small>jane.doe@email.com</small>
-              </td>
-              <td class="pet-list">
-                Charlie <span class="pet-id">/ 11203</span>
-              </td>
-              <td>Employee</td>
-              <td>$0.00</td>
-              <td>$125.00</td>
-              <td class="money-paid">$125.00</td>
-              <td>$0.00</td>
-              <td>-</td>
-              <td>Current</td>
-              <td><span class="status-pill status-current">Current</span></td>
-              <td>
-                <button class="btn btn-xs btn-primary action-btn" data-toggle="modal" data-target="#statementModal">View Statement</button>
-                <button class="btn btn-xs btn-default action-btn">History</button>
-              </td>
-            </tr>
+      <div class="payment-card">
+        <div class="icon"><i class="fa fa-pause-circle"></i></div>
+        <div class="title">Billing Hold</div>
+        <div class="amount">$9,860</div>
+        <div class="count">12 Accounts</div>
+      </div>
 
-            <tr>
-              <td>
-                <strong>Mike Johnson</strong><br>
-                <small>mike.johnson@email.com</small>
-              </td>
-              <td class="pet-list">
-                Luna <span class="pet-id">/ 11610</span><br>
-                Rocky <span class="pet-id">/ 11611</span><br>
-                Daisy <span class="pet-id">/ 11612</span>
-              </td>
-              <td>Payment Plan</td>
-              <td>$350.00</td>
-              <td>$290.00</td>
-              <td class="money-paid">$100.00</td>
-              <td class="money-due">$540.00</td>
-              <td>Feb 15, 2026</td>
-              <td>91-120</td>
-              <td><span class="status-pill status-plan">Active Payment Plan</span></td>
-              <td>
-                <button class="btn btn-xs btn-primary action-btn" data-toggle="modal" data-target="#statementModal">View Statement</button>
-                <button class="btn btn-xs btn-success action-btn">Take Payment</button>
-                <button class="btn btn-xs btn-warning action-btn">Review Plan</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <strong>Maria Roe</strong><br>
-                <small>maria.roe@email.com</small>
-              </td>
-              <td class="pet-list">
-                Cooper <span class="pet-id">/ 12091</span>
-              </td>
-              <td>Hardship</td>
-              <td>$480.00</td>
-              <td>$135.00</td>
-              <td class="money-paid">$0.00</td>
-              <td class="money-due">$615.00</td>
-              <td>Jan 31, 2026</td>
-              <td>120+</td>
-              <td><span class="status-pill status-review">Collections Review</span></td>
-              <td>
-                <button class="btn btn-xs btn-primary action-btn" data-toggle="modal" data-target="#statementModal">View Statement</button>
-                <button class="btn btn-xs btn-danger action-btn">Send to Collections</button>
-                <button class="btn btn-xs btn-default action-btn">History</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="payment-card">
+        <div class="icon"><i class="fa fa-refresh"></i></div>
+        <div class="title">Recurring Continues</div>
+        <div class="amount">$11,630</div>
+        <div class="count">15 Accounts</div>
       </div>
     </div>
+  </div>
 
-    <div class="panel panel-hannah">
-      <div class="panel-heading">
-        How This Replaces Invoice Aging
+  <div class="filter-box">
+    <form class="form-inline">
+      <div class="form-group">
+        <label>Search</label>
+        <input type="text" class="form-control" placeholder="Member, Pet, Email">
       </div>
-      <div class="panel-body">
+
+      <div class="form-group" style="margin-left:10px;">
+        <label>Hannah Service Type</label>
+        <select class="form-control">
+          <option>All</option>
+          <option>General</option>
+          <option>HLH</option>
+          <option>Specialty Plan</option>
+          <option>Employee</option>
+          <option>Hardship</option>
+          <option>Veteran</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-left:10px;">
+        <label>Payment Plan</label>
+        <select class="form-control">
+          <option>All</option>
+          <option>Has Payment Plan</option>
+          <option>Active</option>
+          <option>Delinquent</option>
+          <option>Billing Hold</option>
+          <option>Recurring Continues</option>
+          <option>No Payment Plan</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary" style="margin-left:10px;">Apply Filter</button>
+      <button type="button" class="btn btn-default">Clear</button>
+    </form>
+  </div>
+
+  <div class="panel panel-hannah">
+    <div class="panel-heading">Member Account Balances</div>
+    <div class="panel-body">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Pets</th>
+            <th>Hannah Service Type</th>
+            <th>Previous Balance</th>
+            <th>New TLC Charges</th>
+            <th>Payments This Cycle</th>
+            <th>Total Balance</th>
+            <th>Aging</th>
+            <th>Billing Status</th>
+            <th>Payment Plan</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><strong>John Smith</strong><br><small>john.smith@email.com</small></td>
+            <td class="pet-list">Bella <span class="pet-id">/ 10291</span><br>Max <span class="pet-id">/ 10487</span></td>
+            <td>General</td>
+            <td>$100.00</td>
+            <td>$300.00</td>
+            <td class="money-paid">$200.00</td>
+            <td class="money-due">$200.00</td>
+            <td>31-60</td>
+            <td><span class="status-pill status-due">Active / Payment Due</span></td>
+            <td><span class="mini-tag">No active plan</span></td>
+            <td>
+              <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#statementModal">View Statement</button>
+              <button class="btn btn-xs btn-success">Take Payment</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Jane Doe</strong><br><small>jane.doe@email.com</small></td>
+            <td class="pet-list">Charlie <span class="pet-id">/ 11203</span></td>
+            <td>Employee</td>
+            <td>$0.00</td>
+            <td>$125.00</td>
+            <td class="money-paid">$125.00</td>
+            <td>$0.00</td>
+            <td>Current</td>
+            <td><span class="status-pill status-current">Active / Good Standing</span></td>
+            <td><span class="mini-tag">No active plan</span></td>
+            <td>
+              <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#statementModal">View Statement</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Mike Johnson</strong><br><small>mike.johnson@email.com</small></td>
+            <td class="pet-list">Luna <span class="pet-id">/ 11610</span><br>Rocky <span class="pet-id">/ 11611</span></td>
+            <td>HLH + Specialty Plan</td>
+            <td>$350.00</td>
+            <td>$290.00</td>
+            <td class="money-paid">$100.00</td>
+            <td class="money-due">$540.00</td>
+            <td>91-120</td>
+            <td><span class="status-pill status-current">Active Billing</span></td>
+            <td><span class="status-pill status-plan">Active Plan<br><small>Payment 2 of 4 due 07/15</small></span></td>
+            <td>
+              <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#statementModal">View Statement</button>
+              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">Review Plan</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Maria Roe</strong><br><small>maria.roe@email.com</small></td>
+            <td class="pet-list">Cooper <span class="pet-id">/ 12091</span></td>
+            <td>Hardship</td>
+            <td>$480.00</td>
+            <td>$0.00</td>
+            <td class="money-paid">$0.00</td>
+            <td class="money-due">$480.00</td>
+            <td>120+</td>
+            <td><span class="status-pill status-hold">Billing Hold</span></td>
+            <td><span class="status-pill status-past">Delinquent Plan<br><small>Payment 1 missed</small></span></td>
+            <td>
+              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">Review Plan</button>
+              <button class="btn btn-xs btn-danger">Collections Queue</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel panel-hannah">
+    <div class="panel-heading">Implementation Notes for Jing</div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Recommended Source of Truth</th>
+            <th>Display Logic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HLH / Specialty / Employee / Veteran / Hardship</td>
+            <td>Existing Plan / Hannah Service Type</td>
+            <td>Summarize balances by service type. A Member may appear in multiple service-type cards if they have multiple Pets/plans with different service types.</td>
+          </tr>
+          <tr>
+            <td>Payment Plan</td>
+            <td>payment_plans table joined by member_id</td>
+            <td>Separate filter/status: Has Payment Plan, Active, Delinquent, Billing Hold, Recurring Continues.</td>
+          </tr>
+          <tr>
+            <td>Account Balance</td>
+            <td>Open invoices/payment allocation</td>
+            <td>Group by Member account; show one rolling balance and one aging status.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="statementModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Monthly Statement Preview</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="statement-box">
+          <div class="statement-header">
+            <div class="row">
+              <div class="col-sm-6">
+                <h3 style="margin-top:0; color:#15566e;">Hannah Pet Hospital</h3>
+                <strong>Monthly Account Statement</strong><br>
+                Member: John Smith<br>
+                Statement Date: April 26, 2026<br>
+                Due Date: May 31, 2026
+              </div>
+              <div class="col-sm-6 text-right">
+                <h4>Account Balance</h4>
+                <h2 class="money-due">$400.00</h2>
+              </div>
+            </div>
+          </div>
+
+          <table class="table table-condensed">
+            <tbody>
+              <tr><td><strong>Previous Unpaid Balance</strong></td><td class="text-right">$100.00</td></tr>
+              <tr><td>Bella Monthly TLC Fee</td><td class="text-right">$150.00</td></tr>
+              <tr><td>Max Monthly TLC Fee</td><td class="text-right">$150.00</td></tr>
+              <tr><td>Payments/Credits This Cycle</td><td class="text-right">($0.00)</td></tr>
+            </tbody>
+          </table>
+
+          <div class="statement-total">Total Amount Due: $400.00</div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary">Send Statement</button>
+        <button class="btn btn-success">Take Payment</button>
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="planModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Payment Plan Details</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-3"><strong>Plan Status</strong><br><span class="status-pill status-plan">Active</span></div>
+          <div class="col-sm-3"><strong>Account Handling</strong><br>Continue Recurring</div>
+          <div class="col-sm-3"><strong>Original Past Due</strong><br>$400.00</div>
+          <div class="col-sm-3"><strong>Remaining Plan Balance</strong><br>$200.00</div>
+        </div>
+
+        <hr>
+
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th>Old Invoice-Based View</th>
-              <th>New Statement-Based View</th>
+              <th>Payment</th>
+              <th>Due Date</th>
+              <th>Past Due Portion</th>
+              <th>Recurring Charges</th>
+              <th>Total Due</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>March invoice overdue: $100<br>April invoice overdue: $200</td>
-              <td>Member account balance: $300<br>Oldest unpaid date determines aging bucket</td>
-            </tr>
-            <tr>
-              <td>Payment is tied to one invoice</td>
-              <td>Payment reduces overall Member account balance, oldest balance first internally</td>
-            </tr>
-            <tr>
-              <td>Multiple overdue statuses per Member</td>
-              <td>One account status per Member</td>
-            </tr>
+            <tr><td>Payment 1 of 4</td><td>06/15/2026</td><td>$100.00</td><td>$200.00</td><td>$300.00</td><td><span class="status-pill status-current">Paid</span></td></tr>
+            <tr><td>Payment 2 of 4</td><td>07/15/2026</td><td>$100.00</td><td>$200.00</td><td>$300.00</td><td><span class="status-pill status-due">Scheduled</span></td></tr>
+            <tr><td>Payment 3 of 4</td><td>08/15/2026</td><td>$100.00</td><td>$200.00</td><td>$300.00</td><td><span class="status-pill status-due">Scheduled</span></td></tr>
+            <tr><td>Payment 4 of 4</td><td>09/15/2026</td><td>$100.00</td><td>$200.00</td><td>$300.00</td><td><span class="status-pill status-due">Scheduled</span></td></tr>
           </tbody>
         </table>
+
+        <p><strong>Note:</strong> Monthly fees continue to generate as normal. Scheduled payment pulls can include both the current monthly fee and the planned past-due installment, then allocate payment oldest balance first internally.</p>
       </div>
-    </div>
 
-    <p class="footer-note">Static GitHub Pages prototype. This mockup uses sample data only and does not connect to Hannahware.</p>
-  </div>
-
-  <div class="modal fade" id="statementModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Monthly Statement Preview</h4>
-        </div>
-
-        <div class="modal-body">
-          <div class="statement-box">
-            <div class="statement-header">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3 style="margin-top:0; color:#15566e;">Hannah Pet Hospital</h3>
-                  <strong>Monthly Account Statement</strong><br>
-                  Member: John Smith<br>
-                  Statement Date: April 26, 2026<br>
-                  Due Date: May 31, 2026
-                </div>
-                <div class="col-sm-6 text-right">
-                  <h4>Account Balance</h4>
-                  <h2 class="money-due">$400.00</h2>
-                </div>
-              </div>
-            </div>
-
-            <table class="table table-condensed">
-              <tbody>
-                <tr>
-                  <td><strong>Previous Unpaid Balance</strong></td>
-                  <td class="text-right">$100.00</td>
-                </tr>
-                <tr>
-                  <td>Bella Monthly TLC Fee</td>
-                  <td class="text-right">$150.00</td>
-                </tr>
-                <tr>
-                  <td>Max Monthly TLC Fee</td>
-                  <td class="text-right">$150.00</td>
-                </tr>
-                <tr>
-                  <td>Payments/Credits This Cycle</td>
-                  <td class="text-right">($0.00)</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="statement-total">
-              Total Amount Due: $400.00
-            </div>
-
-            <p style="margin-top:15px;">
-              <strong>Note:</strong> This statement is a snapshot. If the Member pays only part of this amount, the unpaid balance rolls forward to the next statement as Previous Balance.
-            </p>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-primary">Send Statement</button>
-          <button class="btn btn-success">Take Payment</button>
-          <button class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-
+      <div class="modal-footer">
+        <button class="btn btn-warning">Edit Plan</button>
+        <button class="btn btn-danger">Cancel Plan</button>
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
