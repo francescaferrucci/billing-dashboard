@@ -130,7 +130,7 @@
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(9, minmax(115px, 1fr));
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
       gap: 10px;
     }
 
@@ -172,6 +172,12 @@
     .service-count {
       font-size: 12px;
       color: #555;
+      line-height: 1.35;
+    }
+
+    .pet-plan-count {
+      color: #7a858b;
+      font-size: 11px;
     }
 
     .payment-filter-grid {
@@ -391,10 +397,7 @@
       <a class="aging-tab">181+</a>
       <a class="aging-tab">Credits</a>
       <a class="aging-tab">Balance</a>
-    </div>
-    <label style="font-weight:400; margin-right:18px;"><input type="checkbox"> For follow up only</label>
-    <label style="font-weight:400;"><input type="checkbox"> Include all users in email search</label>
-  </div>
+    </div>  </div>
 
   <div class="section">
     <h4>For Hannah Service Type</h4>
@@ -404,55 +407,31 @@
       <a class="service-card active">
         <div class="service-name">General</div>
         <div class="service-amount">$126,840</div>
-        <div class="service-count">438 Accounts</div>
+        <div class="service-count">438 Accounts<br><span class="pet-plan-count">(612 Pet Plans)</span></div>
       </a>
 
       <a class="service-card">
-        <div class="service-name">Classroom</div>
-        <div class="service-amount">$3,210</div>
-        <div class="service-count">18 Accounts</div>
-      </a>
-
-      <a class="service-card">
-        <div class="service-name">Curt's Fund</div>
-        <div class="service-amount">$4,850</div>
-        <div class="service-count">11 Accounts</div>
+        <div class="service-name">Hannah's Loving Hands</div>
+        <div class="service-amount">$39,590</div>
+        <div class="service-count">124 Accounts<br><span class="pet-plan-count">(176 Pet Plans)</span></div>
       </a>
 
       <a class="service-card">
         <div class="service-name">Employee</div>
         <div class="service-amount">$7,920</div>
-        <div class="service-count">31 Accounts</div>
+        <div class="service-count">31 Accounts<br><span class="pet-plan-count">(44 Pet Plans)</span></div>
       </a>
 
       <a class="service-card">
-        <div class="service-name">Group Home</div>
-        <div class="service-amount">$6,540</div>
-        <div class="service-count">17 Accounts</div>
-      </a>
-
-      <a class="service-card">
-        <div class="service-name">HLH</div>
-        <div class="service-amount">$10,830</div>
-        <div class="service-count">29 Accounts</div>
-      </a>
-
-      <a class="service-card">
-        <div class="service-name">Hardship</div>
+        <div class="service-name">Hardship Assistance</div>
         <div class="service-amount">$14,600</div>
-        <div class="service-count">42 Accounts</div>
+        <div class="service-count">42 Accounts<br><span class="pet-plan-count">(59 Pet Plans)</span></div>
       </a>
 
       <a class="service-card">
         <div class="service-name">Specialty Plan</div>
         <div class="service-amount">$8,355</div>
-        <div class="service-count">21 Accounts</div>
-      </a>
-
-      <a class="service-card">
-        <div class="service-name">Veteran</div>
-        <div class="service-amount">$14,160</div>
-        <div class="service-count">49 Accounts</div>
+        <div class="service-count">21 Accounts<br><span class="pet-plan-count">(27 Pet Plans)</span></div>
       </a>
     </div>
   </div>
@@ -464,37 +443,37 @@
     <div class="payment-filter-grid">
       <div class="payment-card active">
         <div class="icon"><i class="fa fa-calendar-check-o"></i></div>
-        <div class="title">Has Payment Plan</div>
+        <div class="title">Payment Plans</div>
         <div class="amount">$21,490</div>
-        <div class="count">27 Accounts</div>
+        <div class="count">27 Accounts<br><span class="pet-plan-count">(39 Pet Plans)</span></div>
       </div>
 
       <div class="payment-card">
         <div class="icon"><i class="fa fa-play-circle"></i></div>
-        <div class="title">Active Plan</div>
+        <div class="title">Current Accounts</div>
         <div class="amount">$18,240</div>
-        <div class="count">21 Accounts</div>
+        <div class="count">21 Accounts<br><span class="pet-plan-count">(31 Pet Plans)</span></div>
       </div>
 
       <div class="payment-card">
         <div class="icon"><i class="fa fa-exclamation-triangle"></i></div>
         <div class="title">Delinquent Plan</div>
         <div class="amount">$3,250</div>
-        <div class="count">6 Accounts</div>
+        <div class="count">6 Accounts<br><span class="pet-plan-count">(8 Pet Plans)</span></div>
       </div>
 
       <div class="payment-card">
         <div class="icon"><i class="fa fa-pause-circle"></i></div>
         <div class="title">Billing Hold</div>
         <div class="amount">$9,860</div>
-        <div class="count">12 Accounts</div>
+        <div class="count">12 Accounts<br><span class="pet-plan-count">(17 Pet Plans)</span></div>
       </div>
 
       <div class="payment-card">
         <div class="icon"><i class="fa fa-refresh"></i></div>
         <div class="title">Recurring Continues</div>
         <div class="amount">$11,630</div>
-        <div class="count">15 Accounts</div>
+        <div class="count">15 Accounts<br><span class="pet-plan-count">(22 Pet Plans)</span></div>
       </div>
     </div>
   </div>
@@ -511,11 +490,10 @@
         <select class="form-control">
           <option>All</option>
           <option>General</option>
-          <option>HLH</option>
-          <option>Specialty Plan</option>
+          <option>Hannah's Loving Hands</option>
           <option>Employee</option>
-          <option>Hardship</option>
-          <option>Veteran</option>
+          <option>Hardship Assistance</option>
+          <option>Specialty Plan</option>
         </select>
       </div>
 
@@ -523,9 +501,9 @@
         <label>Payment Plan</label>
         <select class="form-control">
           <option>All</option>
-          <option>Has Payment Plan</option>
-          <option>Active</option>
-          <option>Delinquent</option>
+          <option>Payment Plans</option>
+          <option>Current Accounts</option>
+          <option>Delinquent Plan</option>
           <option>Billing Hold</option>
           <option>Recurring Continues</option>
           <option>No Payment Plan</option>
@@ -594,7 +572,7 @@
           <tr>
             <td><strong>Mike Johnson</strong><br><small>mike.johnson@email.com</small></td>
             <td class="pet-list">Luna <span class="pet-id">/ 11610</span><br>Rocky <span class="pet-id">/ 11611</span></td>
-            <td>HLH + Specialty Plan</td>
+            <td>Hannah's Loving Hands + Specialty Plan</td>
             <td>$350.00</td>
             <td>$290.00</td>
             <td class="money-paid">$100.00</td>
@@ -604,14 +582,14 @@
             <td><span class="status-pill status-plan">Active Plan<br><small>Payment 2 of 4 due 07/15</small></span></td>
             <td>
               <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#statementModal">View Statement</button>
-              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">Review Plan</button>
+              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">View Payment Plan</button>
             </td>
           </tr>
 
           <tr>
             <td><strong>Maria Roe</strong><br><small>maria.roe@email.com</small></td>
             <td class="pet-list">Cooper <span class="pet-id">/ 12091</span></td>
-            <td>Hardship</td>
+            <td>Hardship Assistance</td>
             <td>$480.00</td>
             <td>$0.00</td>
             <td class="money-paid">$0.00</td>
@@ -620,7 +598,7 @@
             <td><span class="status-pill status-hold">Billing Hold</span></td>
             <td><span class="status-pill status-past">Delinquent Plan<br><small>Payment 1 missed</small></span></td>
             <td>
-              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">Review Plan</button>
+              <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#planModal">View Payment Plan</button>
               <button class="btn btn-xs btn-danger">Collections Queue</button>
             </td>
           </tr>
@@ -642,9 +620,9 @@
         </thead>
         <tbody>
           <tr>
-            <td>HLH / Specialty / Employee / Veteran / Hardship</td>
+            <td>Hannah's Loving Hands / Specialty / Employee / Hardship Assistance Assistance</td>
             <td>Existing Plan / Hannah Service Type</td>
-            <td>Summarize balances by service type. A Member may appear in multiple service-type cards if they have multiple Pets/plans with different service types.</td>
+            <td>Summarize balances by service type. Hannah's Loving Hands includes Classroom, Curt's Fund, Group Home, Veteran, and HLH.</td>
           </tr>
           <tr>
             <td>Payment Plan</td>
